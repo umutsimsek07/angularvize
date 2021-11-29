@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+
+      <h4 class="text-white">{{secAnket?.anketadi}} Anketi Soruları  <i class="btn fas fa-backward fa-1x" [routerLink]="['/anketler']"> Anketler</i></h4>
+      <h5 class="text-danger" *ngIf="sorular?.length==0">Henüz Bu Ankete Soru Eklenmedi!</h5>
+      <table class="table table-hover shadow">
+        <thead>
+          <th>Id</th>
+          <th>Soru metni</th>
+          <th>Kayıt Tarihi</th>
+          <th>Düzenleme Tarihi</th>
+          <th>Cevaplar</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Düzenle</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Sil</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let soru of sorular">
+            <td>{{soru.id}}</td>
+            <td>{{soru.sorumetni}}</td>
+            <td>{{soru.kayTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td>{{soru.duzTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td><button class="btn btn-outline-info" [routerLink]="['/cevap',soru.id]">Cevap</button></td>
+            <td><i class="btn fas fa-paint-roller fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Duzenle(soru)"></i></td>
+            <td><i class="btn fas fa-trash-alt fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Sil(soru)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4" *ngIf="YetkiKontrol(['Admin'])">
+      <h4 class="text-white">Soru Ekle - Düzenle</h4>
+      <form #frm="ngForm" (ngSubmit)="Kaydet()">
+        <div class="form-group">
+          <label class="text-white">Soru</label>
+          <input type="text" name="soru" class="form-control ilerigeri" [(ngModel)]="secSoru.sorumetni" required>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <!-- <label>Anket Seçiniz</label>
+          <select name="anketById" class="form-control" [(ngModel)]="secSoru.anketById" required>
+            <option *ngFor="let anket of anketler" [value]="anket.id">{{anket.anketadi}}</option>
+          </select> -->
+
+          <input type="hidden" name="id" class="form-control" [(ngModel)]="secSoru.id">
+          <input type="hidden" name="anketById" class="form-control" [(ngModel)]="secSoru.anketById">
+        </div>
+
+
+
+
+
+        <div class="form-group mt-2">
+          <input type="submit" name="Kaydet" value="Kaydet" class="btn btn-success my-auto"
+            [disabled]="frm.invalid">
+          <button class="btn btn-danger mx-2" (click)="Iptal()" *ngIf="secSoru.id!=0">Iptal</button>
+        </div>
+
+
+      </form>
+      <div class="mt-2" [ngClass]="sonuc.islem? 'alert alert-success':'alert alert-danger'"
+        *ngIf="sonuc.mesaj?.length>0">{{sonuc.mesaj}}</div>
+    </div>
+
+  </div>
+</div>

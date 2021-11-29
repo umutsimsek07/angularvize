@@ -1,0 +1,70 @@
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div id="adminpaneltable" class="col-md-12 table-responsive">
+      <h5 class="text-white">Kullanıcılar</h5>
+      <input type="text" class="form-control w-50 my-3 ilerigeri" placeholder="ara" (keyup)="Ara($event.target.value)">
+      <table class="table table-hover shadow">
+        <thead>
+          <th>Id</th>
+          <th>Kullanıcı Adı</th>
+          <th>Ad Soyad</th>
+          <th>Mail</th>
+          <th>Yaş</th>
+          <th>Katılma Tarihi</th>
+          <th>Düzenleme Tarihi</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Düzenle</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Sil</th>
+          <th>Yetki</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let uye of uyeler">
+            <td>{{uye.id}}</td>
+            <td>{{uye.kadi}}</td>
+            <td>{{uye.adsoyad}}</td>
+            <td>{{uye.mail}}</td>
+            <td>{{uye.yas}}</td>
+            <td>{{uye.kayTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td>{{uye.duzTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td><i class="btn fas fa-paint-roller fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Duzenle(uye)" (click)="Goster()"></i></td>
+            <td><i class="btn fas fa-trash-alt fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Sil(uye)"></i></td>      
+            <td>
+              <span *ngIf="uye.admin==1">Admin</span>
+              <span *ngIf="uye.admin==0">Üye</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+        <div class="col-md-3 " *ngIf="islem">
+          <h5 class="text-white">Kullanıcı Düzenle</h5>
+          <form #uyeForm="ngForm" (ngSubmit)="Kaydet()">
+            <div class="form-group" *ngIf="YetkiKontrol(['Admin'])">
+              <label class="text-white">Admin mi?</label>
+              <select name="admin" class="form-control ilerigeri text-white " #admin ngModel [(ngModel)]="secUye.admin" required>
+                  <option value="0">Hayır</option>
+                  <option value="1">Evet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="text-white">Kullanıcı Adı</label>
+              <input type="text" name="kadi" class="form-control ilerigeri text-white" #kadi ngModel [(ngModel)]="secUye.kadi" required>
+            </div>
+            <div class="form-group">
+              <label class="text-white">Ad Soyad</label>
+              <input type="text" name="adsoyad" class="form-control ilerigeri text-white" #adsoyad ngModel [(ngModel)]="secUye.adsoyad" required>
+            </div>
+            <div class="form-group">
+              <label class="text-white">Mail</label>
+              <input type="string" name="mail" class="form-control ilerigeri text-white" #mail ngModel [(ngModel)]="secUye.mail" required>
+            </div>
+            <div class="form-group">
+              <label class="text-white">Yas</label>
+              <input type="number" name="yas" class="form-control ilerigeri text-white" #yas ngModel [(ngModel)]="secUye.yas" required>
+            </div>
+            <input type="submit" value="Kaydet" class="btn btn-success my-2" [disabled]="uyeForm.invalid">
+            <button class="btn btn-danger mx-2" (click)="Gizle()" (click)="Vazgec()" *ngIf="secUye.id!=0">Vazgeç</button>
+            <div class="mt-3 mb-5" [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj?.length>0">{{sonuc.mesaj}}</div>
+          </form>
+        </div>
+  </div>
+</div>

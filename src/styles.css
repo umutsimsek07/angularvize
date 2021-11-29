@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.bgcimage {
+    height: 1500px;
+    /* background-image: url("../src/assets/image/hero-bg.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-color: #396EB0;
+    background-size: cover;
+  }
+  

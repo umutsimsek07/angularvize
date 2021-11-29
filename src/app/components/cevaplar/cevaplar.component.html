@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="text-white">{{secSoru?.sorumetni}} Anketi Cevapları <i class="btn fas fa-backward fa-1x" (click)="goBack()"> Sorular</i></h4>
+      <h5 class="text-danger" *ngIf="cevaplar?.length==0">Henüz Bu Soruya Cevap Eklenmedi!</h5>
+      <table class="table table-hover shadow">
+        <thead>
+          <th>Id</th>
+          <th>Cevap metni</th>
+          <th>Kayıt Tarihi</th>
+          <th>Düzenleme Tarihi</th>
+          <th>Düzenle</th>
+          <th>Sil</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cevap of cevaplar">
+            <td>{{cevap.id}}</td>
+            <td>{{cevap.cevapmetni}}</td>
+            <td>{{cevap.kayTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td>{{cevap.duzTarih | date:'dd.MM.yyyy HH:mm.ss'}}</td>
+            <td><i class="btn fas fa-paint-roller fa-2x"(click)="Duzenle(cevap)"></i></td>
+            <td><i class="btn fas fa-trash-alt fa-2x" (click)="Sil(cevap)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <h4 class="text-white">Cevap Ekle - Düzenle</h4>
+      <form #frm="ngForm" (ngSubmit)="Kaydet()">
+        <div class="form-group">
+          <label class="text-white">Cevap</label>
+          <input type="text" name="cevap" class="form-control ilerigeri" [(ngModel)]="secCevap.cevapmetni" required>
+        </div>
+
+        <!-- <div class="form-group">
+          <label>soruById</label>
+          <select name="soruById" class="form-control" [(ngModel)]="secCevap.soruById" required>
+            <option *ngFor="let soru of sorular" [value]="soru.id">{{soru.soruid}}</option>
+          </select>
+        </div> -->
+
+
+
+        <div class="form-group">
+          <input type="hidden" name="id" class="form-control" [(ngModel)]="secCevap.id">
+        </div>
+
+
+
+
+
+        <div class="form-group mt-2">
+          <input type="submit" name="Kaydet" value="Kaydet" class="btn btn-success my-auto"
+            [disabled]="frm.invalid">
+          <button class="btn btn-danger mx-2" (click)="Iptal()" *ngIf="secCevap.id!=0">Iptal</button>
+        </div>
+
+
+      </form>
+      <div class="mt-2" [ngClass]="sonuc.islem? 'alert alert-success':'alert alert-danger'"
+        *ngIf="sonuc.mesaj?.length>0">{{sonuc.mesaj}}</div>
+    </div>
+  </div>
+</div>

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "vize"
+    }
+  },
+  "defaultProject": "vize",
+  "cli": {
+    "analytics": "e47c16c6-df60-4c86-af75-b86d25fcfc0f"
+  }
 }

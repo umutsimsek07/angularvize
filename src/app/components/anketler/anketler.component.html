@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="text-white">ANKETLER</h4>
+      <input type="text" class="form-control w-50 ilerigeri text-white" placeholder="ara" (keyup)="Ara($event.target.value)">
+      <table class="table mt-2 table-hover shadow">
+        <thead>
+          <th (click)="Sirala('id')">Id</th>
+          <th (click)="Sirala('anketadi')">Anket Adı</th>
+          <th (click)="Sirala('kayTarih')">Kayıt Tarihi</th>
+          <th (click)="Sirala('duzTarih')">Düzenleme Tarihi</th>
+          <th>Sorular</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Düzenle</th>
+          <th *ngIf="YetkiKontrol(['Admin'])">Sil</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let anket of anketler">
+            <td>{{anket.id}}</td>
+            <td>{{anket.anketadi}}</td>
+            <td>{{anket.kayTarih | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td>{{anket.duzTarih | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+            <td><button class="btn btn-info" [routerLink]="['/soru',anket.id]">Sorular</button></td>
+            <td><i class="btn fas fa-paint-roller fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Duzenle(anket)"></i></td>
+            <td><i class="btn fas fa-trash-alt fa-2x" *ngIf="YetkiKontrol(['Admin'])" (click)="Sil(anket)" ></i></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex align-items-center">
+        <input type="number" class="form-control w-25 text-white ilerigeri" [value]="limit" (keyup)="LimitBelirle($event.target.value)">
+        <button class="btn btn-primary mx-2" (click)="OncekiSayfa()" [disabled]="sayfa<2" >Önceki</button>
+        <button class="btn btn-primary mx-2" (click)="SonrakiSayfa()" [disabled]="sayfa>1"
+          >Sonraki</button>
+      </div>
+    </div>
+    <div class="col-md-4" *ngIf="YetkiKontrol(['Admin'])">
+      <h4 class="text-white">Anket Oluştur - Düzenle</h4>
+      <form #frm="ngForm" (ngSubmit)="Kaydet()">
+        <div class="form-group">
+          <label class="text-white">Anket Grubu</label>
+          <input type="text" name="anketgrubu" class="form-control ilerigeri" [(ngModel)]="secAnket.anketadi" required> 
+          <input type="hidden"  name="id" class="form-control" [(ngModel)]="secAnket.id" > 
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Kaydet" class="btn btn-success my-2" [disabled]="frm.invalid"> 
+          <button class="btn btn-danger mx-2" (click)="Iptal()" *ngIf="secAnket.id!=0">Iptal</button>
+        </div>
+      </form>
+      <div [ngClass]="sonuc.islem? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj?.length">{{sonuc.mesaj}}</div>
+    </div>
+  </div>
+</div>

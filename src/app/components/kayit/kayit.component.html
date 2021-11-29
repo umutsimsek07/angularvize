@@ -1,0 +1,49 @@
+<div class="container h-100">
+  <div class="row justify-content-sm-center h-100">
+    <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h1 class="fs-4 card-title fw-bold mb-4">KAYIT OL</h1>
+          <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+            <div class="mb-3">
+              <label class="mb-2 text-muted">KULLANICI ADI</label>
+              <input type="text" name="kadi" class="form-control" #kadi="ngModel" [(ngModel)]="secUye.kadi" required>
+              <input type="hidden"  value=0 name="admin" class="form-control" #admin ngModel [(ngModel)]="secUye.admin">
+              <div class="invalid-feedback">
+                İsim Geçersiz
+              </div>
+
+            </div>
+            <div class="mb-3">
+              <label class="mb-2 text-muted" for="email">mail</label>
+              <input type="mail" name="mail" class="form-control" #mail="ngModel" [(ngModel)]="secUye.mail" required>
+              <div class="invalid-feedback">
+                mail Geçersiz
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="mb-2 w-100">
+                <label class="text-muted" for="password">ŞİFRE</label>
+              </div>
+              <input type="password" name="parola" class="form-control" #parola="ngModel" [(ngModel)]="secUye.parola">
+                <div class="invalid-feedback">
+                  ŞİFRE ZORUNLU
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <button type="submit" class="btn btn-primary ms-auto" (click)="KayitOl()">
+                KAYIT OL
+              </button>
+            </div>
+            <div class="mt-3" [ngClass]="sonuc.islem ? 'alert alert-success': 'alert alert-danger'" *ngIf="sonuc.mesaj?.length">{{sonuc.mesaj}}</div>
+          </form>
+        </div>
+      </div>
+      <div class="text-center mt-5 text-muted">
+        Copyright &copy; 2017-2021 &mdash; Your Company
+      </div>
+    </div>
+  </div>
+</div>

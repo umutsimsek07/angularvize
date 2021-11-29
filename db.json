@@ -1,0 +1,186 @@
+{
+  "uye": [
+    {
+      "id": 1,
+      "kadi": "umut",
+      "mail": "umutsanis@gmail.com",
+      "parola": "123",
+      "admin": "1",
+      "kayTarih": "1638096590395",
+      "duzTarih": "1638096590395",
+      "adsoyad": "Umut Şimşek",
+      "yas": 21
+    },
+    {
+      "id": 2,
+      "kadi": "erol",
+      "mail": "erol@gmail.com",
+      "parola": "123",
+      "admin": "1",
+      "kayTarih": "1637700366301",
+      "duzTarih": "1637700366301",
+      "adsoyad": "Erol Aydemir",
+      "yas": 20
+    },
+    {
+      "id": 876,
+      "kadi": "musa",
+      "mail": "musa@mail.com",
+      "parola": "123",
+      "admin": 0,
+      "kayTarih": "1637843654930",
+      "duzTarih": "1637843654930",
+      "adsoyad": "Musa Paçal",
+      "yas": 21
+    },
+    {
+      "id": 163,
+      "kadi": "oguz",
+      "mail": "oguz@mail.com",
+      "parola": "123",
+      "admin": 0,
+      "kayTarih": "1638092675558",
+      "duzTarih": "1638092675558",
+      "adsoyad": "Oğuz Kaan Ekin",
+      "yas": 19
+    }
+  ],
+  "anketler": [
+    {
+      "id": 2,
+      "anketadi": "Arabalar",
+      "kayTarih": "1637849085789",
+      "duzTarih": "1637874260007"
+    },
+    {
+      "id": 3,
+      "anketadi": "Şarkılar",
+      "kayTarih": "1637871770987",
+      "duzTarih": "1637874262291"
+    }
+  ],
+  "soru": [
+    {
+      "id": 4,
+      "anketById": "2",
+      "sorumetni": "Umut'un arabasının markası",
+      "duzTarih": "1637851006559"
+    },
+    {
+      "id": 5,
+      "anketById": "2",
+      "sorumetni": "en sevilen markalar",
+      "duzTarih": "1637851007688"
+    },
+    {
+      "id": 6,
+      "anketById": "3",
+      "sorumetni": "Tarkan'ın en sevilen şarkıları.",
+      "kayTarih": "1637872023376",
+      "duzTarih": "1637872023376"
+    },
+    {
+      "id": 7,
+      "anketById": "3",
+      "sorumetni": "Serdar Ortaç'ın en sevilen şarkıları.",
+      "kayTarih": "1637872078913",
+      "duzTarih": "1637872078913"
+    },
+    {
+      "id": 8,
+      "anketById": "3",
+      "sorumetni": "Sezen Aksu'nun en sevilen şarkıları.",
+      "kayTarih": "1637872100664",
+      "duzTarih": "1637872100664"
+    },
+    {
+      "id": 9,
+      "anketById": "3",
+      "sorumetni": "Zeynep Bastık' ın en sevilen şarkıları",
+      "kayTarih": "1637872164981",
+      "duzTarih": "1637872164981"
+    },
+    {
+      "id": 10,
+      "anketById": "2",
+      "sorumetni": "Umut'un arabasının rengi",
+      "kayTarih": "1637934175865",
+      "duzTarih": "1637934175865"
+    }
+  ],
+  "cevap": [
+    {
+      "id": 4,
+      "soruById": "4",
+      "cevapmetni": "E 36 BMW 316i",
+      "duzTarih": "1637922019999"
+    },
+    {
+      "id": 6,
+      "soruById": "5",
+      "cevapmetni": "bmw",
+      "duzTarih": "1637851041512"
+    },
+    {
+      "id": 7,
+      "soruById": "5",
+      "cevapmetni": "mercedes",
+      "duzTarih": "1637851042556"
+    },
+    {
+      "id": 8,
+      "soruById": "5",
+      "cevapmetni": "audi",
+      "duzTarih": "1637851043540"
+    },
+    {
+      "id": 9,
+      "soruById": "6",
+      "cevapmetni": "dudu",
+      "kayTarih": "1637872216045",
+      "duzTarih": "1637872216045"
+    },
+    {
+      "id": 10,
+      "soruById": "7",
+      "cevapmetni": "Poşet",
+      "kayTarih": "1637872231504",
+      "duzTarih": "1637872231504"
+    },
+    {
+      "id": 11,
+      "soruById": "7",
+      "cevapmetni": "Mikrop",
+      "kayTarih": "1637872240617",
+      "duzTarih": "1637872240617"
+    },
+    {
+      "id": 12,
+      "soruById": "9",
+      "cevapmetni": "Dargın",
+      "kayTarih": "1637872449210",
+      "duzTarih": "1637872449210"
+    },
+    {
+      "id": 13,
+      "soruById": "8",
+      "cevapmetni": "Ben de yoluma giderim o zaman.",
+      "kayTarih": "1637872456933",
+      "duzTarih": "1637872456933"
+    },
+    {
+      "id": 14,
+      "soruById": "8",
+      "cevapmetni": "Kaçın kurası",
+      "kayTarih": "1637872665680",
+      "duzTarih": "1637872675371"
+    },
+    {
+      "id": 15,
+      "soruById": "10",
+      "cevapmetni": "Metro mavi",
+      "kayTarih": "1637934185656",
+      "duzTarih": "1637934185656"
+    }
+  ]
+}
